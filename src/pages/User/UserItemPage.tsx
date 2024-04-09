@@ -1,43 +1,45 @@
-import React, {FC, useEffect, useState} from 'react';
-import {IUser} from "../../types/types";
+import React, { FC, useEffect, useState, useCallback } from 'react';
+import { IUser } from "../../types/types";
 import axios from "axios";
-import {useParams, useHistory} from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 interface UserItemPageParams {
-    id: string;
+  userId: string;
 }
 
 const UserItemPage: FC = () => {
 
-    const [user, setUser] = useState<IUser | null>(null)
-    const params = useParams<UserItemPageParams>()
-    const history = useHistory()
+  const [user, setUser] = useState<IUser | null>(null)
+  const params = useParams<UserItemPageParams>()
+  const history = useHistory()
 
-    useEffect(() => {
-        fetchUser()
-    }, [])
-
-    async function fetchUser() {
-        try {
-            const response = await axios.get<IUser>('https://jsonplaceholder.typicode.com/users/' + params.id)
-            setUser(response.data)
-        } catch (e) {
-            alert(e)
-        }
+  const fetchUser = useCallback(async () => {
+    try {
+      const response = await axios.get<IUser>('https://jsonplaceholder.typicode.com/users/' + params.userId)
+      setUser(response.data)
+    } catch (e) {
+      alert(e)
     }
+  }, [params.userId])
 
-    return (
-        <div>
-            <button onClick={() => history.push('/users')}>Back</button>
-            <h1>User page: {user?.name}</h1>
-            <div>
-                {user?.email}
-            </div>
-            <div>
-                {user?.address.city} {user?.address.street} {user?.address.zipcode}
-            </div>
-        </div>
-    );
+
+  useEffect(() => {
+    fetchUser()
+  }, [fetchUser])
+
+
+  return (
+    <div>
+      <button onClick={() => history.push('/users')}>Back</button>
+      <h1>User page: {user?.name}</h1>
+      <div>
+        {user?.email}
+      </div>
+      <div>
+        {user?.address.city} {user?.address.street} {user?.address.zipcode}
+      </div>
+    </div>
+  );
 };
 
 export default UserItemPage;

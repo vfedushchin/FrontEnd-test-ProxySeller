@@ -12,11 +12,12 @@ const App = () => {
             <div>
                 <div>
                     <NavLink to="/users">Users</NavLink>
+                    <h2>Proxy-Seller React Test Task (frontend)</h2>
                 </div>
                 <Route path={'/users'} exact>
                     <UsersPage/>
                 </Route>
-                <Route path={'/users/:id'}>
+                <Route path={'/users/:userId'}>
                     <UserItemPage/>
                 </Route>
                 <Route path={'/posts/:userId'}>

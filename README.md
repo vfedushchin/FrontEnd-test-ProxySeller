@@ -49,3 +49,29 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+У якості API викорстовуємо сервіс https://jsonplaceholder.typicode.com/
+
+Технології які треба використовувати:
+ReactJS (у чистому виді без NEXT JS)
+Повинна бути сумісність з NodeJS 14 версії
+Збірка проекту за допомогою WebPack
+
+ТЗ:
+Для всіх сторінок повинен бути свій meta title та description.
+Тобто нам треба зробити SSR, щоб наш додаток індексувався.
+Буде плюсом якщо гідрація (hydrate).
+
+На головній сторінці у нас є список користувачів, звідки ми можемо відкрити пости або альбоми користувача
+
+Повинен бути доступ до контенту постів та альбомів.
+
+Користувач повинен мати змогу поділитися посиланням, з будь-якого місця додатку (мається на увазі, що роути повинні бути побудовані таким чином, щоб при копіюванні URL сторінки, контент фіксувався).
+
+Додати пошук на сторінці по одному з полів (username ); Також хотілось би побачити сортування (asc desc), також по полю username.
+
+Обов'язково:
+- посилання на виконану роботу
+- посилання на репозиторій

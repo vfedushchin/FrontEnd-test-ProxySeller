@@ -3,7 +3,7 @@ import {IAlbum} from '../../types/types';
 import axios from "axios";
 import List from './../../components/List';
 import AlbumItem from "./AlbumItem";
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 interface AlbumsItemPageParams {
@@ -13,7 +13,6 @@ interface AlbumsItemPageParams {
 const AlbumsPage:FC = () => {
     const [posts, setPosts] = useState<IAlbum[]>([])
     const params = useParams<AlbumsItemPageParams>()
-    const history = useHistory()
 
     const fetchAlbums = useCallback(async () => {
         try {
