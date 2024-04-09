@@ -5,7 +5,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { Helmet } from "react-helmet";
 
 interface AlbumPageParams {
-  albumId: string;
+  postId: string;
 }
 
 const PostPage: FC = () => {
@@ -16,12 +16,12 @@ const PostPage: FC = () => {
 
   const fetchPost = useCallback(async () => {
     try {
-      const response = await axios.get<IAlbum>('https://jsonplaceholder.typicode.com/albums/' + params.albumId)
+      const response = await axios.get<IAlbum>('https://jsonplaceholder.typicode.com/albums/' + params.postId)
       setAlbum(response.data)
     } catch (e) {
       alert(e)
     }
-  }, [params.albumId])
+  }, [params.postId])
 
 
   useEffect(() => {
