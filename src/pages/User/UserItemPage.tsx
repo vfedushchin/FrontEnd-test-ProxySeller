@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState, useCallback } from 'react';
 import { IUser } from "../../types/types";
 import axios from "axios";
 import { useParams, useHistory } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 
 interface UserItemPageParams {
   userId: string;
@@ -29,16 +30,23 @@ const UserItemPage: FC = () => {
 
 
   return (
-    <div>
-      <button onClick={() => history.push('/users')}>Back</button>
-      <h1>User page: {user?.name}</h1>
+    <>
+      <Helmet>
+        <title>User Page</title>
+        <meta name="description" content="User page, data from jsonplaceholder site"/>
+      </Helmet>
       <div>
-        {user?.email}
+        <button onClick={() => history.push('/users')}>Back</button>
+        <h1>User page: {user?.name}</h1>
+        <div>
+          {user?.email}
+        </div>
+        <div>
+          {user?.address.city} {user?.address.street} {user?.address.zipcode}
+        </div>
       </div>
-      <div>
-        {user?.address.city} {user?.address.street} {user?.address.zipcode}
-      </div>
-    </div>
+    </>
+
   );
 };
 

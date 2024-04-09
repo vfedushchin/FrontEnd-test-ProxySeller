@@ -1,9 +1,11 @@
 import React from 'react';
 import {BrowserRouter, NavLink, Route} from 'react-router-dom'
 import UsersPage from "./pages/Users/UsersPage";
-import PostsPage from "./pages/Posts/PostsPage";
-import AlbumsPage from "./pages/Albums/AlbumsPage";
 import UserItemPage from "./pages/User/UserItemPage";
+import PostsPage from "./pages/Posts/PostsPage";
+import PostPage from "./pages/Post/PostPage";
+import AlbumsPage from "./pages/Albums/AlbumsPage";
+import AlbumPage from "./pages/Album/AlbumPage";
 
 const App = () => {
 
@@ -23,8 +25,14 @@ const App = () => {
                 <Route path={'/posts/:userId'}>
                     <PostsPage/>
                 </Route>
+                <Route path={'/post/:postId'}>
+                    <PostPage/>
+                </Route>
                 <Route path={'/albums/:userId'}>
                     <AlbumsPage/>
+                </Route>
+                <Route path={'/album/:albumId'}>
+                    <AlbumPage/>
                 </Route>
                 <Route path={'/'} exact>
                     <UsersPage/>

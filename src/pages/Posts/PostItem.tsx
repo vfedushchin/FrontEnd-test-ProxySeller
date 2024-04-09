@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { IPost } from "../../types/types";
 import styles from './PostItem.module.scss'
+import { Link } from "react-router-dom";
 
 interface PostItemProps {
   post: IPost;
@@ -16,6 +17,8 @@ const PostItem: FC<PostItemProps> = ({ post }) => {
       </span>
       <h3>{post.title}</h3>
       {post.body}
+      <br/>
+      <Link to={`/post/${post.id}`}>Open Post</Link>
     </div>
   );
 };
